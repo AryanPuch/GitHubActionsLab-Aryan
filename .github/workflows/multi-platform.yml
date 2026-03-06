@@ -1,0 +1,56 @@
+## YAML Template.
+---
+name: Multi-Platform
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on pull request events but only for the "master" branch
+  pull_request:
+    branches: [ "master" ]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "ubuntu-job"
+  ubuntu-job:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      - uses: actions/checkout@v4
+      - name: First step in ubuntu-job job
+        run: uname -a
+      - name: Second step in ubuntu-job job
+        run: |
+          echo "Hello World from Ubuntu" > Ubuntu.txt
+          cat Ubuntu.txt
+  
+  # This workflow contains a single job called "windows-job"
+  windows-job:
+    # The type of runner that the job will run on
+    runs-on: windows-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      - uses: actions/checkout@v4
+      - name: First step in windows-job job
+        run: systeminfo
+      - name: Second step in windows-job job
+        run: |
+          echo Hello World from Windows > Windows.txt
+          type Windows.txt
+
+  # This workflow contains a single job called "macos-job"
+  macos-job:
+    # The type of runner that the job will run on
+    runs-on: macos-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      - uses: actions/checkout@v4
+      - name: First step in macos-job job
+        run: uname -a
+      - name: Second step in macos-job job
+        run: |
+          echo "Hello World from MacOS" > Macos.txt
+          cat Macos.txt
