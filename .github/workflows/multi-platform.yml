@@ -35,7 +35,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: First step in windows-job job
         run: systeminfo
-      - name: Second step in ubuntu-job job
+      - name: Second step in windows-job job
         run: |
           echo Hello World from Windows > Windows.txt
           type Windows.txt
